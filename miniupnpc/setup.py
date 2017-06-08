@@ -23,6 +23,8 @@ setup(name="miniupnpc",
       description='miniUPnP client',
       ext_modules=[
          Extension(name="miniupnpc", sources=["miniupnpcmodule.c"],
-                   extra_objects=["libminiupnpc.a"])
+                   #extra_objects=["libminiupnpc.a"])
+                   library_dirs=['build/cmakevc'],
+                   libraries=['miniupnpc', "ws2_32", "iphlpapi"])
       ])
 
