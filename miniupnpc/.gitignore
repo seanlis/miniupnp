@@ -30,3 +30,4 @@ testigddescparse
 validateigddescparse
 dist/
 miniupnpc.egg-info/
+_skbuild/

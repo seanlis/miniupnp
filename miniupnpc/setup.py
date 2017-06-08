@@ -7,10 +7,8 @@
 # python script to build the miniupnpc module under unix
 #
 # replace libminiupnpc.a by libminiupnpc.so for shared library usage
-try:
-      from setuptools import setup, Extension
-except ImportError:
-      from distutils.core import setup, Extension
+from skbuild import setup
+from setuptools import Extension
 from distutils import sysconfig
 sysconfig.get_config_vars()["OPT"] = ''
 sysconfig.get_config_vars()["CFLAGS"] = ''
@@ -24,7 +22,8 @@ setup(name="miniupnpc",
       ext_modules=[
          Extension(name="miniupnpc", sources=["miniupnpcmodule.c"],
                    #extra_objects=["libminiupnpc.a"])
-                   library_dirs=['build/cmakevc'],
+                   #library_dirs=['build/cmakevc'],
+                   library_dirs=['_skbuild/cmake-install/lib'],
                    libraries=['miniupnpc', "ws2_32", "iphlpapi"])
       ])
 
