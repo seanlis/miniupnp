@@ -32,6 +32,6 @@ before_install:
   - python --version
   - pip --version
   - cd miniupnpc
-  - pip install -r requirements.txt
+  - pip install scikit-ci==0.13.0 scikit-ci-addons==0.11.0
 
 script: python setup.py bdist_wheel
