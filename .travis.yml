@@ -37,3 +37,6 @@ before_install:
 
 install:
   - ci install
+
+script:
+  - python setup.py bdist_wheel
