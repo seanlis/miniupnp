@@ -22,5 +22,6 @@ matrix:
 before_install:
   - cd miniupnpc
   - pip install -U pip
+  - pip install -r requirements.txt
 
 script: python setup.py bdist_wheel
