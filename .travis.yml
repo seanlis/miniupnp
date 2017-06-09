@@ -7,6 +7,19 @@ os:
   - linux
   - osx
 
+matrix:
+  include:
+
+    - os: osx
+      language: generic
+      env:
+        - PYTHON_VERSION=3.6.1
+
+    - os: osx
+      language: generic
+      env:
+        - PYTHON_VERSION=2.7.12
+
 before_install:
   - brew install python
   - cd miniupnpc
