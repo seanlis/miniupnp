@@ -10,8 +10,16 @@
 from skbuild import setup
 from setuptools import Extension
 from distutils import sysconfig
+from distutils.util import get_platform
+
 sysconfig.get_config_vars()["OPT"] = ''
 sysconfig.get_config_vars()["CFLAGS"] = ''
+
+platform = get_platform()
+lib = ['miniupnpc']
+if platform.startswith('Win'):
+    lib += ['ws2_32', 'iphlpapi']
+
 setup(name="miniupnpc",
       version=open('VERSION').read().strip(),
       author='Thomas BERNARD',
@@ -24,6 +32,11 @@ setup(name="miniupnpc",
                    #extra_objects=["libminiupnpc.a"])
                    #library_dirs=['build/cmakevc'],
                    library_dirs=['_skbuild/cmake-install/lib'],
-                   libraries=['miniupnpc', "ws2_32", "iphlpapi"])
-      ])
+                   libraries=lib)
+      ],
+      install_requires=[
+          'cmake', 'scikit-build'
+      ],
+      cmake_args=['-DUPNPC_BUILD_SHARED=FALSE']
+)
 
