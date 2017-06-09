@@ -21,7 +21,6 @@ matrix:
         - PYTHON_VERSION=2.7.12
 
 before_install:
-  - brew install python
   - cd miniupnpc
   - pip install -U pip
 
