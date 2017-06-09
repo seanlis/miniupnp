@@ -39,4 +39,4 @@ install:
   - ci install
 
 script:
-  - ci build
+  - ci build --without-deps
