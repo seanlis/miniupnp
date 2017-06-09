@@ -29,8 +29,5 @@ install:
     - python --version
     - python -m pip install --disable-pip-version-check --upgrade pip
     - $<RUN_ENV> pip install -U -r requirements.txt
-
-build:
-  commands:
     - python setup.py --hide-listing sdist
     - $<RUN_ENV> python setup.py --hide-listing bdist_wheel $<SETUP_ARGS>
