@@ -32,11 +32,11 @@ before_install:
   - python --version
   - pip --version
   - cd miniupnpc
-  - pip install scikit-ci==0.13.0 scikit-ci-addons==0.11.0
+  - pip install scikit-ci scikit-ci-addons
   - ci_addons --install ../addons
 
 install:
   - ci install
 
 script:
-  - python setup.py bdist_wheel
+  - ci build
