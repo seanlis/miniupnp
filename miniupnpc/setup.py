@@ -17,7 +17,7 @@ sysconfig.get_config_vars()["CFLAGS"] = ''
 
 platform = get_platform()
 lib = ['miniupnpc']
-if platform.startswith('Win'):
+if platform.startswith('win'):
     lib += ['ws2_32', 'iphlpapi']
 
 setup(name="miniupnpc",
