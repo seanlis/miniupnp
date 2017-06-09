@@ -30,10 +30,6 @@ install:
     - python -m pip install --disable-pip-version-check --upgrade pip
     - $<RUN_ENV> pip install -U -r requirements.txt
 
-before_build:
-  commands:
-    - flake8
-
 build:
   commands:
     - python setup.py --hide-listing sdist
