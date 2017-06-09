@@ -1,0 +1,40 @@
+schema_version: "0.5.0"
+
+before_install:
+
+  appveyor:
+    environment:
+      PATH: $<PYTHON_DIR>;$<PYTHON_DIR>\\Scripts;$<PATH>
+      RUN_ENV: .\\..\\addons\\appveyor\\run-with-visual-studio.cmd
+    commands:
+      - python ../addons/appveyor/patch_vs2008.py
+
+  circle:
+    environment:
+      PATH: /opt/python/$<MANYLINUX_PYTHON>/bin:$<PATH>
+    commands:
+      - rm -rf dist/*
+
+  travis:
+    osx:
+      environment:
+        PATH: $<HOME>/.pyenv/versions/$<PYTHON_VERSION>/bin:$<PATH>
+        SETUP_ARGS: --plat-name macosx-10.6-x86_64 -- -DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.6 -DCMAKE_OSX_ARCHITECTURES:STRING=x86_64 -DCMAKE_OSX_SYSROOT:PATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
+      commands:
+        - python ../addons/travis/install_pyenv.py
+        - python ../addons/travis/install_cmake.py 3.6.2
+
+install:
+  commands:
+    - python --version
+    - python -m pip install --disable-pip-version-check --upgrade pip
+    - $<RUN_ENV> pip install -U -r requirements.txt
+
+before_build:
+  commands:
+    - flake8
+
+build:
+  commands:
+    - python setup.py --hide-listing sdist
+    - $<RUN_ENV> python setup.py --hide-listing bdist_wheel $<SETUP_ARGS>
