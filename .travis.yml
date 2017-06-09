@@ -6,7 +6,5 @@ python:
 before_install:
   - cd miniupnpc
   - pip install -U pip
-  - pip install scikit-build
-  - pip install cmake
 
 script: python setup.py bdist_wheel
