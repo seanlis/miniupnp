@@ -1,5 +1,7 @@
 language: python
 
+os: osx
+
 before_install:
   - cd miniupnpc
   - pip install scikit-build
