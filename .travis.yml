@@ -3,7 +3,12 @@ python:
   - "2.7"
   - "3.6"
 
+os:
+  - linux
+  - osx
+
 before_install:
+  - brew install python
   - cd miniupnpc
   - pip install -U pip
 
