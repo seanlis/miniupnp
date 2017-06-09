@@ -20,8 +20,9 @@ matrix:
       python: 3.6
 
 before_install:
+  - python --version
+  - pip --version
   - cd miniupnpc
-  - pip install -U pip
   - pip install -r requirements.txt
 
 script: python setup.py bdist_wheel
