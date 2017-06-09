@@ -37,3 +37,6 @@ before_install:
 
 install:
   - ci install
+
+script:
+  - ci test
